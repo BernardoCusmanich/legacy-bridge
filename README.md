@@ -1,6 +1,6 @@
 # legacy-bridge
 
-[![CI](https://github.com/SEU_USUARIO/legacy-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/SEU_USUARIO/legacy-bridge/actions/workflows/ci.yml)
+[![CI](https://github.com/BernardoCusmanich/legacy-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/BernardoCusmanich/legacy-bridge/actions/workflows/ci.yml)
 
 Agente em .NET 8 que detecta mudanças no banco Firebird de um ERP legado e as entrega como eventos assinados para um webhook, com entrega garantida via outbox local.
 
