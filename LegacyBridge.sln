@@ -1,0 +1,66 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{403EA96E-B702-5027-99D5-7964A5024AA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{99524E80-65FB-59FB-99D0-7009BE3636CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D32381D8-05F0-545D-9C9A-19291E0D05AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyBridge.Core", "src\LegacyBridge.Core\LegacyBridge.Core.csproj", "{4A3E57D8-B040-53EC-AA32-6AA1372019C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyBridge.Infrastructure", "src\LegacyBridge.Infrastructure\LegacyBridge.Infrastructure.csproj", "{BAD8FFE3-E1EF-5A30-85D3-1B9956291555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyBridge.Worker", "src\LegacyBridge.Worker\LegacyBridge.Worker.csproj", "{F2724479-8E28-5584-93DB-4196F4990337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebhookReceiver", "tools\WebhookReceiver\WebhookReceiver.csproj", "{9C8B5B33-A512-503D-9685-5D443407B97A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSimulator", "tools\DataSimulator\DataSimulator.csproj", "{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyBridge.Tests", "tests\LegacyBridge.Tests\LegacyBridge.Tests.csproj", "{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A3E57D8-B040-53EC-AA32-6AA1372019C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3E57D8-B040-53EC-AA32-6AA1372019C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3E57D8-B040-53EC-AA32-6AA1372019C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3E57D8-B040-53EC-AA32-6AA1372019C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD8FFE3-E1EF-5A30-85D3-1B9956291555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD8FFE3-E1EF-5A30-85D3-1B9956291555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD8FFE3-E1EF-5A30-85D3-1B9956291555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD8FFE3-E1EF-5A30-85D3-1B9956291555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2724479-8E28-5584-93DB-4196F4990337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2724479-8E28-5584-93DB-4196F4990337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2724479-8E28-5584-93DB-4196F4990337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2724479-8E28-5584-93DB-4196F4990337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8B5B33-A512-503D-9685-5D443407B97A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8B5B33-A512-503D-9685-5D443407B97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8B5B33-A512-503D-9685-5D443407B97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8B5B33-A512-503D-9685-5D443407B97A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A3E57D8-B040-53EC-AA32-6AA1372019C7} = {403EA96E-B702-5027-99D5-7964A5024AA5}
+		{BAD8FFE3-E1EF-5A30-85D3-1B9956291555} = {403EA96E-B702-5027-99D5-7964A5024AA5}
+		{F2724479-8E28-5584-93DB-4196F4990337} = {403EA96E-B702-5027-99D5-7964A5024AA5}
+		{9C8B5B33-A512-503D-9685-5D443407B97A} = {99524E80-65FB-59FB-99D0-7009BE3636CD}
+		{5D67B4FD-E46E-5C7F-9E7C-8F293B3A1CDD} = {99524E80-65FB-59FB-99D0-7009BE3636CD}
+		{3D58B84D-EF65-5DA0-BF9D-9C3A6C2925C6} = {D32381D8-05F0-545D-9C9A-19291E0D05AD}
+	EndGlobalSection
+EndGlobal

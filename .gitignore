@@ -1,0 +1,24 @@
+# Build
+bin/
+obj/
+out/
+publish/
+*.user
+*.suo
+.vs/
+.vscode/
+.idea/
+TestResults/
+
+# Runtime
+data/
+logs/
+*.db
+*.db-shm
+*.db-wal
+
+# Secrets
+.env
+appsettings.Development.json
+appsettings.Local.json
+secrets.json

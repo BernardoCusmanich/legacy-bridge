@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/data/
+**/logs/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/appsettings.Development.json
+.git/
+.github/
+demo/
+.env

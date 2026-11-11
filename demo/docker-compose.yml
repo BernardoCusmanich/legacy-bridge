@@ -1,0 +1,80 @@
+# Demo completa: Firebird (ERP fictício) → legacy-bridge → WebhookReceiver.
+#
+#   cd demo
+#   docker compose up --build
+#
+# Funciona sem .env: os valores abaixo depois de ":-" são segredos de DEMONSTRAÇÃO.
+# Para trocar, copie .env.example para .env e edite.
+
+name: legacy-bridge-demo
+
+x-firebird-connection: &firebird-connection "DataSource=firebird;Port=3050;Database=/var/lib/firebird/data/erp_demo.fdb;User=bridge;Password=${FIREBIRD_PASSWORD:-demo-firebird-password};Charset=UTF8"
+
+services:
+  firebird:
+    image: firebirdsql/firebird:5
+    environment:
+      FIREBIRD_ROOT_PASSWORD: ${FIREBIRD_ROOT_PASSWORD:-demo-root-password}
+      FIREBIRD_USER: bridge
+      FIREBIRD_PASSWORD: ${FIREBIRD_PASSWORD:-demo-firebird-password}
+      FIREBIRD_DATABASE: /var/lib/firebird/data/erp_demo.fdb
+      FIREBIRD_DATABASE_DEFAULT_CHARSET: UTF8
+      TZ: UTC
+    volumes:
+      # Scripts em /docker-entrypoint-initdb.d rodam só quando o banco é criado.
+      - ./firebird/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - firebird-data:/var/lib/firebird/data
+    ports:
+      - "3050:3050"
+    healthcheck:
+      # O entrypoint roda o init.sql antes de subir o servidor; porta aberta = banco pronto.
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/3050'"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+      start_period: 5s
+
+  webhook-receiver:
+    build:
+      context: ..
+      dockerfile: tools/WebhookReceiver/Dockerfile
+    environment:
+      WEBHOOK_SECRET: ${BRIDGE_WEBHOOK_SECRET:-demo-only-secret-change-me-0123456789abcdef}
+      FAIL_RATE: ${FAIL_RATE:-0.2}
+    ports:
+      - "5080:8080"
+
+  bridge:
+    build:
+      context: ..
+      dockerfile: src/LegacyBridge.Worker/Dockerfile
+    depends_on:
+      firebird:
+        condition: service_healthy
+      webhook-receiver:
+        condition: service_started
+    environment:
+      DOTNET_ENVIRONMENT: Production
+      Bridge__Firebird__ConnectionString: *firebird-connection
+      Bridge__Webhook__Url: http://webhook-receiver:8080/webhook
+      Bridge__Webhook__Secret: ${BRIDGE_WEBHOOK_SECRET:-demo-only-secret-change-me-0123456789abcdef}
+      Bridge__PollingIntervalSeconds: "2"
+    volumes:
+      - bridge-data:/app/data
+    restart: unless-stopped
+
+  simulator:
+    build:
+      context: ..
+      dockerfile: tools/DataSimulator/Dockerfile
+    depends_on:
+      firebird:
+        condition: service_healthy
+    environment:
+      FIREBIRD_CONNECTION_STRING: *firebird-connection
+    command: ["${SIMULATOR_INTERVAL_SECONDS:-3}"]
+    restart: unless-stopped
+
+volumes:
+  firebird-data:
+  bridge-data:
